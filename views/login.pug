@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .full-page-main.flex-center-container
+          form(role='form' method='POST' action='/login').login-form
+              h1 Log in
+              .form-group
+                  label(for='username') Username:
+                  input#username.form-control(type='text', placeholder='username' name='username' required)
+              .form-group
+                  label(for='password') Password:
+                  input#password.form-control(type='password', placeholder='password' name='password' required)
+              button(type='submit' name='login').login-button Log in
