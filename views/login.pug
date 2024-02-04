@@ -5,14 +5,15 @@ block scripts
     script(src='/javascripts/authentication.js' defer)
 
 block content
-    .full-page-main.flex-center-container
-          form(role='form' onsubmit='authenticate(event)').login-form
-              h1 Log in
-              .form-group
-                  label(for='username') Username:
-                  input#username.form-control(type='text', placeholder='username' name='username' required)
-              .form-group
-                  label(for='password') Password:
-                  input#password.form-control(type='password', placeholder='password' name='password' required)
-              button(type='button' onclick='togglePasswordField()')#password-toggle Show
-              button(type='submit' name='login').login-button Log in
+    .full-page-main.flex-center-container.flex-column
+        #error-message(hidden) Incorrect username or password!
+        form(role='form' onsubmit='authenticate(event)').login-form
+            h1 Log in
+            .form-group
+                label(for='username') Username:
+                input#username.form-control(type='text', placeholder='username' name='username' required)
+            .form-group
+                label(for='password') Password:
+                input#password.form-control(type='password', placeholder='password' name='password' required)
+            button(type='button' onclick='togglePasswordField()')#password-toggle Show
+            button(type='submit' name='login').login-button Log in

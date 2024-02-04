@@ -18,5 +18,8 @@ async function authenticate(event) {
 
         window.location.href = '/dashboard';
     }
+    else {
+        document.getElementById('error-message').removeAttribute('hidden');
+    }
 
 }

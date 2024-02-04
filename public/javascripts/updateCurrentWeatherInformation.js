@@ -17,7 +17,29 @@ async function updateCurrentWeatherInformation() {
     )
     const weatherInfo = await weatherResponse.json();
     const temp = weatherInfo.main.temp;
+    const weatherDescription = weatherInfo.weather[0].description;
 
-    const temperatureDisplayElement = document.getElementById('temperatureInfo');
-    temperatureDisplayElement.innerHTML = `Currently, ${city} has a temperature of ${temp} °C`;
+    const temperatureDisplayElement = document.getElementById('temperature-info');
+    temperatureDisplayElement.innerHTML = `Currently, ${city} has a temperature of ${temp} °C<br>Weather conditions: ${weatherDescription}`;
+
+    let imagePath = '/images/weather-pictures/';
+
+    // I match the pictures by icons - last character defines only the night/day version
+    const iconForImageMatch = weatherInfo.weather[0].icon.slice(0,-1);
+
+    switch(iconForImageMatch) {
+        case '01': imagePath += 'clear-sky.jpg'; break;
+        case '02': imagePath += 'few-clouds.jpg'; break;
+        case '03': imagePath += 'scattered-clouds.jpg'; break;
+        case '04': imagePath += 'broken-clouds.jpg'; break;
+        case '09': imagePath += 'shower-rain.jpg'; break;
+        case '10': imagePath += 'rain.jpg'; break;
+        case '11': imagePath += 'thunderstorm.jpg'; break;
+        case '13': imagePath += 'snow.jpg'; break;
+        case '50': imagePath += 'mist.jpg'; break;
+    }
+
+    const imgElement = document.createElement('img');
+    imgElement.setAttribute('src', imagePath);
+    document.getElementById('weather-image-container').appendChild(imgElement);
 }
