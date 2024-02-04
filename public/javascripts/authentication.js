@@ -11,5 +11,12 @@ async function authenticate(event) {
     const data = {username: username, password: password};
 
     const response = await fetch('/api/login', {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}});
-    console.log(await response.text());
+
+    if(response.status === 200) {
+        const sessionToken = await response.text();
+        document.cookie = 'sessionToken='+sessionToken;
+
+        window.location.href = '/dashboard';
+    }
+
 }

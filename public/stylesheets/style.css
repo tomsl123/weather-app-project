@@ -83,3 +83,7 @@ label {
     width: 5rem;
     border-radius: 50%;
 }
+
+.weather-container {
+    flex-direction: column;
+}
