@@ -3,9 +3,10 @@
  * @type {User}
  */
 module.exports = class User {
-    constructor(username, password, city) {
+    constructor(username, password, city, profilePicturePath) {
         this.username = username;
         this.password = password;
         this.city = city;
+        this.profilePicturePath = profilePicturePath;
     }
 }

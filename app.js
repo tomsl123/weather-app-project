@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const homeRouter = require('./routes/home');
 const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
+const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,6 +26,7 @@ app.use('/', indexRouter);
 app.use('/home', homeRouter);
 app.use('/login', loginRouter);
 app.use('/api', apiRouter);
+app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

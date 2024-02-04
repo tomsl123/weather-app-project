@@ -2,10 +2,11 @@ extends layout
 
 block scripts
     script(src='/javascripts/password-toggle.js' defer)
+    script(src='/javascripts/authentication.js' defer)
 
 block content
     .full-page-main.flex-center-container
-          form(role='form' method='POST' action='/login').login-form
+          form(role='form' onsubmit='authenticate(event)').login-form
               h1 Log in
               .form-group
                   label(for='username') Username:

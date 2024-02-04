@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .flex-center-container {
     display: flex;
     align-items: center;
@@ -59,4 +63,23 @@ label {
     margin-top: -1.8rem;
     position: relative;
     left: 8rem;
+}
+
+.dashboard-container {
+    width: 60%;
+    margin: 5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dashboard-title {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+#profile-picture {
+    width: 5rem;
+    border-radius: 50%;
 }

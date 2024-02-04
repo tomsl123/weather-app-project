@@ -18,3 +18,12 @@ exports.getUserCityByUsername = function (username) {
     const foundUser = database.users.find(user => user.username === username);
     return foundUser.city
 }
+
+/**
+ * Gets profile picture path of a user from database
+ * @param {string} username
+ */
+exports.getUserProfilePicturePathByUsername = function (username) {
+    const foundUser = database.users.find(user => user.username === username);
+    return foundUser.profilePicturePath
+}
