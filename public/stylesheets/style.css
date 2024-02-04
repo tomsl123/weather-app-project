@@ -54,3 +54,9 @@ label {
     background-color: #e5e5e5;
     cursor: pointer;
 }
+
+#password-toggle {
+    margin-top: -1.8rem;
+    position: relative;
+    left: 8rem;
+}

@@ -1,5 +1,8 @@
 extends layout
 
+block scripts
+    script(src='/javascripts/password-toggle.js' defer)
+
 block content
     .full-page-main.flex-center-container
           form(role='form' method='POST' action='/login').login-form
@@ -10,4 +13,5 @@ block content
               .form-group
                   label(for='password') Password:
                   input#password.form-control(type='password', placeholder='password' name='password' required)
+              button(type='button' onclick='togglePasswordField()')#password-toggle Show
               button(type='submit' name='login').login-button Log in
