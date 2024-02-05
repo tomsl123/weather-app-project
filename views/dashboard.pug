@@ -2,12 +2,14 @@ extends layout
 
 block scripts
     script(src='javascripts/updateCurrentWeatherInformation.js')
+    script(src='javascripts/authentication.js')
+    script(src='javascripts/updateUserData.js')
 
 block content
     .dashboard-container
         img(src='/images/profile-pictures/person1.jpg')#profile-picture
-        h1.dashboard-title Your name's dashboard
-        button#logout.login-button Logout
+        h1#dashboard-title Your name's dashboard
+        button(onclick='deauthenticate()').login-button Logout
     .dashboard-container.flex-column
         button(onclick='updateCurrentWeatherInformation()') Get current weather
         p#temperature-info

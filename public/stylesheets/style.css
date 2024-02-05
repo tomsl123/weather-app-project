@@ -73,7 +73,7 @@ label {
     justify-content: space-evenly;
 }
 
-.dashboard-title {
+#dashboard-title {
     width: 50%;
     text-align: center;
     display: inline-block;

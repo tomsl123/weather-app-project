@@ -2,7 +2,7 @@
  * Gets weather information and displays it.
  */
 async function updateCurrentWeatherInformation() {
-    const city = 'Berlin';
+    const city = await fetchUserCity();
     const apiKey = '19df663de78873d8425b36b3fc7d25b6';
 
     const locationResponse = await fetch(
@@ -39,7 +39,24 @@ async function updateCurrentWeatherInformation() {
         case '50': imagePath += 'mist.jpg'; break;
     }
 
-    const imgElement = document.createElement('img');
+
+    let imgElement = document.getElementById('weather-picture');
+    if(imgElement === null) {
+        imgElement = document.createElement('img');
+        document.getElementById('weather-image-container').appendChild(imgElement);
+    }
+    imgElement.id = 'weather-picture';
     imgElement.setAttribute('src', imagePath);
-    document.getElementById('weather-image-container').appendChild(imgElement);
+
+}
+
+/**
+ * Fetches city of a user
+ * @returns {Promise<string>}
+ */
+async function fetchUserCity() {
+    const username = window.localStorage.getItem('username');
+
+    const response = await fetch(`/api/${username}/city`);
+    return await response.text();
 }
