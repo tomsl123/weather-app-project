@@ -1,21 +1,15 @@
+import {getWeatherAndCityInformation} from "./getWeatherAndCityInformation.js";
+
 /**
  * Gets weather information and displays it.
  */
-async function updateCurrentWeatherInformation() {
+export async function updateCurrentWeatherInformation() {
     const city = await fetchUserCity();
     const apiKey = '19df663de78873d8425b36b3fc7d25b6';
 
-    const locationResponse = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
-    )
-    const cityInfo = await locationResponse.json();
-    const lon = cityInfo[0].lon;
-    const lat = cityInfo[0].lat;
+    const weatherAndCityInfo = await getWeatherAndCityInformation(apiKey, city);
+    const weatherInfo = weatherAndCityInfo.weatherInfo;
 
-    const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${apiKey}`
-    )
-    const weatherInfo = await weatherResponse.json();
     const temp = weatherInfo.main.temp;
     const weatherDescription = weatherInfo.weather[0].description;
 
@@ -54,7 +48,7 @@ async function updateCurrentWeatherInformation() {
  * Fetches city of a user
  * @returns {Promise<string>}
  */
-async function fetchUserCity() {
+export async function fetchUserCity() {
     const username = window.localStorage.getItem('username');
 
     const response = await fetch(`/api/${username}/city`);

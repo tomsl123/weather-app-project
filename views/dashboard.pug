@@ -1,9 +1,11 @@
 extends layout
 
 block scripts
-    script(src='javascripts/updateCurrentWeatherInformation.js')
+    script(src='javascripts/updateCurrentWeatherInformation.js' type="module")
     script(src='javascripts/authentication.js')
     script(src='javascripts/updateUserData.js')
+    script(src='javascripts/updateWeatherInformationFromSearch.js' type="module")
+    script(src='javascripts/updateForecast.js' type="module")
 
 block content
     .dashboard-container
@@ -11,6 +13,13 @@ block content
         h1#dashboard-title Your name's dashboard
         button(onclick='deauthenticate()').login-button Logout
     .dashboard-container.flex-column
-        button(onclick='updateCurrentWeatherInformation()') Get current weather
+        button#getCurrent Get current weather
         p#temperature-info
         #weather-image-container
+    #forecast-cards-container(hidden)
+    .dashboard-container.flex-column
+        .bottom-space
+            input(placeholder="Enter city")#city-input
+            button#search-city Get temperature
+        p#search-temperature-info
+        #error-message(hidden) This city does not exist!

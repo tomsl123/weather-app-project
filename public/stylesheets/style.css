@@ -92,13 +92,8 @@ label {
     line-height: 2;
 }
 
-#weather-image-container {
-    width: 20rem;
-    height: 10rem;
-}
-
 #weather-image-container > img {
-    width: 100%;
+    width: 20rem;
 }
 
 #error-message {
@@ -110,4 +105,39 @@ label {
     text-align: center;
     line-height: 2rem;
     border-radius: 5px;
+}
+
+#city-input {
+    margin-right: 1rem;
+}
+
+.bottom-space {
+    margin-bottom: 1rem;
+}
+
+#search-temperature-info {
+    width: 100%;
+    font-weight: bold;
+}
+
+.forecast-container {
+    display: inline-block;
+    width: 12rem;
+    height: 7.5rem;
+    background-color: #cccccc;
+    border-radius: 5px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.forecast-container > p {
+    width: 100%;
+    text-align: center;
+}
+
+#forecast-cards-container {
+    width: 60%;
+    margin: 5rem auto;
+    white-space: nowrap;
+    overflow-x: auto;
 }
